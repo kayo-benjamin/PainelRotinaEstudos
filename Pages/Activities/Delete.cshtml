@@ -1,0 +1,56 @@
+﻿@page "{id:int?}"
+@model PainelRotinaEstudos.Pages.Activities.DeleteModel
+@{
+    ViewData["Title"] = "Excluir Atividade";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card shadow">
+            <div class="card-header bg-danger text-white">
+                <h4 class="mb-0">
+                    <i class="bi bi-exclamation-triangle"></i> Confirmar Exclusão
+                </h4>
+            </div>
+            <div class="card-body">
+                <div class="alert alert-danger d-flex align-items-center">
+                    <i class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2"></i>
+                    <div>
+                        <strong>Atenção!</strong> Esta ação não pode ser desfeita.
+                    </div>
+                </div>
+
+                <h5>Tem certeza que deseja excluir esta atividade?</h5>
+
+                <dl class="row bg-light p-3 rounded border">
+                    <dt class="col-sm-3">Matéria:</dt>
+                    <dd class="col-sm-9"><strong>@Model.Activity.Subject</strong></dd>
+
+                    <dt class="col-sm-3">Dia:</dt>
+                    <dd class="col-sm-9">@Model.Activity.Day</dd>
+
+                    <dt class="col-sm-3">Horário:</dt>
+                    <dd class="col-sm-9">@Model.Activity.Time</dd>
+
+                    <dt class="col-sm-3">Descrição:</dt>
+                    <dd class="col-sm-9">@Model.Activity.Description</dd>
+                </dl>
+
+                <hr>
+
+                <form method="post">
+                    <input type="hidden" asp-for="Activity.Id" />
+
+                    <div class="d-flex gap-2">
+                        <button type="submit" class="btn btn-danger flex-fill">
+                            <i class="bi bi-trash"></i> Sim, Excluir
+                        </button>
+                        <a asp-page="./Index" class="btn btn-secondary flex-fill">
+                            <i class="bi bi-x-circle"></i> Cancelar
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,102 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Painel de Rotina de Estudos";
+}
+
+<!-- Cabeçalho -->
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h1 class="mb-0">
+            <i class="bi bi-calendar-week text-primary"></i>
+            Painel de Rotina de Estudos
+        </h1>
+        <p class="lead text-muted">Gerencie suas atividades de estudo</p>
+    </div>
+    <div>
+        <!-- CORREÇÃO: Este link deve apontar para a página de Criação -->
+        <a asp-page="/Activities/Create" class="btn btn-primary btn-lg">
+            <i class="bi bi-plus-circle"></i> Nova Atividade
+        </a>
+    </div>
+</div>
+
+<!-- Mensagem de Sucesso (TempData) -->
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show temp-message" role="alert">
+        <i class="bi bi-check-circle-fill me-2"></i>
+        @TempData["SuccessMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+
+@if (Model.Activities != null && Model.Activities.Any())
+{
+
+    <div class="alert alert-info d-flex align-items-center mb-3">
+        <i class="bi bi-info-circle-fill me-2 flex-shrink-0"></i>
+        <div>
+            <strong>Total de atividades cadastradas:</strong> @Model.Activities.Count
+        </div>
+    </div>
+
+    <!-- Lista de Cards -->
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        @foreach (var activity in Model.Activities)
+        {
+            <div class="col">
+                <div class="card h-100 shadow-sm activity-card">
+                    <div class="card-header d-flex justify-content-between align-items-center bg-light">
+                        <span class="badge bg-primary fs-6">@activity.Day</span>
+                        <small class="text-muted">
+                            <i class="bi bi-clock"></i> @activity.Time
+                        </small>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <i class="bi bi-book"></i> @activity.Subject
+                        </h5>
+                        <p class="card-text">
+                            @if (!string.IsNullOrEmpty(activity.Description))
+                            {
+                                <!-- Este bloco ternário é um ponto comum de erro. Verifique se o seu está igual -->
+                                @(activity.Description.Length > 80
+                                    ? activity.Description.Substring(0, 80) + "..."
+                                    : activity.Description)
+                            }
+                            else
+                            {
+                                <span class="text-muted fst-italic">Nenhuma descrição.</span>
+                            }
+                        </p>
+                    </div>
+                    <div class="card-footer bg-white d-flex justify-content-end gap-2">
+                        <a asp-page="/Activities/Details" asp-route-id="@activity.Id" class="btn btn-sm btn-outline-info">
+                            <i class="bi bi-eye"></i> Detalhes
+                        </a>
+                        <a asp-page="/Activities/Edit" asp-route-id="@activity.Id" class="btn btn-sm btn-outline-primary">
+                            <i class="bi bi-pencil"></i> Editar
+                        </a>
+                        <a asp-page="/Activities/Delete" asp-route-id="@activity.Id" class="btn btn-sm btn-outline-danger">
+                            <i class="bi bi-trash"></i> Excluir
+                        </a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
+else
+{
+
+    <div class="text-center p-5 border rounded bg-light mt-5">
+        <i class="bi bi-inbox display-1 text-muted"></i>
+        <h3 class="mt-3">Nenhuma atividade cadastrada</h3>
+        <p class="lead text-muted">Comece adicionando uma nova atividade de estudo!</p>
+        <a asp-page="/Activities/Create" class="btn btn-success btn-lg mt-3">
+            <i class="bi bi-plus-circle"></i> Adicionar Primeira Atividade
+        </a>
+    </div>
+}

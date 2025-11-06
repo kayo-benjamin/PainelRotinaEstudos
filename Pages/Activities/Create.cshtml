@@ -1,0 +1,74 @@
+﻿@page
+@model PainelRotinaEstudos.Pages.Activities.CreateModel
+@{
+    ViewData["Title"] = "Nova Atividade";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card shadow">
+            <div class="card-header bg-success text-white">
+                <h4 class="mb-0">
+                    <i class="bi bi-plus-circle"></i> Adicionar Nova Atividade
+                </h4>
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+
+                    <div class="mb-3">
+                        <label asp-for="Activity.Subject" class="form-label fw-bold"></label>
+                        <input asp-for="Activity.Subject" class="form-control"
+                               placeholder="Ex: MAT23, PDR15a, FIS101" />
+                        <span asp-validation-for="Activity.Subject" class="text-danger"></span>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label asp-for="Activity.Day" class="form-label fw-bold"></label>
+                            <select asp-for="Activity.Day" class="form-select">
+                                <option value="">Selecione o dia</option>
+                                <option value="SEG">Segunda-feira (SEG)</option>
+                                <option value="TER">Terça-feira (TER)</option>
+                                <option value="QUA">Quarta-feira (QUA)</option>
+                                <option value="QUI">Quinta-feira (QUI)</option>
+                                <option value="SEX">Sexta-feira (SEX)</option>
+                                <option value="SAB">Sábado (SAB)</option>
+                                <option value="DOM">Domingo (DOM)</option>
+                            </select>
+                            <span asp-validation-for="Activity.Day" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label asp-for="Activity.Time" class="form-label fw-bold"></label>
+                            <input asp-for="Activity.Time" class="form-control" placeholder="Ex: 14:30" />
+                            <span asp-validation-for="Activity.Time" class="text-danger"></span>
+                        </div>
+                    </div> <!-- /row -->
+
+                    <div class="mb-3">
+                        <label asp-for="Activity.Description" class="form-label fw-bold"></label>
+                        <textarea asp-for="Activity.Description" class="form-control" rows="3"
+                                  placeholder="Descreva a atividade de estudo..."></textarea>
+                        <span asp-validation-for="Activity.Description" class="text-danger"></span>
+                    </div>
+
+                    <div class="d-flex gap-2 mt-4">
+                        <button type="submit" class="btn btn-success flex-fill">
+                            <i class="bi bi-save"></i> Salvar Atividade
+                        </button>
+                        <!-- CORREÇÃO: Este link deve voltar para a Index principal -->
+                        <a asp-page="/Index" class="btn btn-secondary flex-fill">
+                            <i class="bi bi-x-circle"></i> Cancelar
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div> 
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

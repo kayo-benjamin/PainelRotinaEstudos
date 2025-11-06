@@ -1,0 +1,10 @@
+C:\Users\kayov\source\repos\PainelRotinaEstudos\PainelRotinaEstudos\obj\Debug\net9.0\PainelRotinaEstudos.csproj.IkvmFrameworkReference.cache
+C:\Users\kayov\source\repos\PainelRotinaEstudos\PainelRotinaEstudos\obj\Debug\net9.0\PainelRotinaEstudos.csproj.AssemblyReference.cache
+C:\Users\kayov\source\repos\PainelRotinaEstudos\PainelRotinaEstudos\obj\Debug\net9.0\rpswa.dswa.cache.json
+C:\Users\kayov\source\repos\PainelRotinaEstudos\PainelRotinaEstudos\obj\Debug\net9.0\PainelRotinaEstudos.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\kayov\source\repos\PainelRotinaEstudos\PainelRotinaEstudos\obj\Debug\net9.0\PainelRotinaEstudos.AssemblyInfoInputs.cache
+C:\Users\kayov\source\repos\PainelRotinaEstudos\PainelRotinaEstudos\obj\Debug\net9.0\PainelRotinaEstudos.AssemblyInfo.cs
+C:\Users\kayov\source\repos\PainelRotinaEstudos\PainelRotinaEstudos\obj\Debug\net9.0\PainelRotinaEstudos.csproj.CoreCompileInputs.cache
+C:\Users\kayov\source\repos\PainelRotinaEstudos\PainelRotinaEstudos\obj\Debug\net9.0\PainelRotinaEstudos.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\kayov\source\repos\PainelRotinaEstudos\PainelRotinaEstudos\obj\Debug\net9.0\PainelRotinaEstudos.RazorAssemblyInfo.cache
+C:\Users\kayov\source\repos\PainelRotinaEstudos\PainelRotinaEstudos\obj\Debug\net9.0\PainelRotinaEstudos.RazorAssemblyInfo.cs
