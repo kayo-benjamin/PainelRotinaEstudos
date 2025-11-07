@@ -1,0 +1,62 @@
+Fase 1: Configuração Inicial (Você só faz isso UMA VEZ)
+
+Passo 1: Instalar o PostgreSQL
+
+Se você ainda não o fez, baixe e instale o PostgreSQL no seu computador. 
+Lembre-se da senha que você definir para o usuário postgres!
+
+Passo 2: Instalar a Ferramenta dotnet-ef
+
+O Entity Framework precisa de uma ferramenta de linha de comando. 
+Se você já rodou isso, não precisa de novo.
+
+** dotnet tool install --global dotnet-ef **
+
+
+Se a ferramenta já estiver instalada, use este comando para atualizá-la:
+
+** dotnet tool update --global dotnet-ef **
+
+
+Passo 3: Configurar sua Senha (Local)
+
+O projeto está configurado para NÃO enviar sua senha para o GitHub. 
+Para rodar localmente, você precisa criar este arquivo:
+
+Arquivo: PainelRotinaEstudos/appsettings.json
+
+Conteúdo: (Substitua SUA_SENHA_AQUI)
+
+{
+  "ConnectionStrings": {
+    "DefaultConnection": "Host=localhost;Database=PainelRotinaEstudosDb;Username=postgres;Password=SUA_SENHA_AQUI"
+  }
+}
+
+
+Passo 4: Criar a "Planta" do Banco (Migration)
+
+Este comando lê seu código (Activity.cs, ApplicationDbContext.cs) e 
+cria uma "planta" (um arquivo de migração) de como o banco deve ser.
+
+Abra seu terminal.
+
+IMPORTANTE: Navegue até a pasta do seu projeto (onde está o .csproj):
+
+cd C:\Users\kayov\source\repos\PainelRotinaEstudos\PainelRotinaEstudos
+
+
+Execute o comando de migração:
+
+** dotnet ef migrations add InitialCreate **
+
+
+Você verá uma nova pasta Migrations/ aparecer no seu projeto. Isso está correto.
+
+Passo 5: Criar o Banco e Rodar o App
+
+Graças à modificação que fizemos no Program.cs, você não precisa do comando dotnet ef database update. A aplicação fará isso para você.
+
+** dotnet run **
+
+Isso vai apagar o último arquivo de migração que você criou, como se nada tivesse acontecido.
